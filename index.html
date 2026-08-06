@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABI — Need something delivered fast and cheap?</title>
+    <script src="tailwind.min.js"></script>
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='100%25' height='100%25' fill='%23FFFFFF' rx='6'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='18' letter-spacing='-1' fill='%231b46ab'%3Eabi%3Ctspan fill='%230EA5E9'%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#0C1E4A",
+              cobalt: "#1149A3",
+              sky: "#0EA5E9",
+              offwhite: "#F4F7FC",
+              mint: "#7EE8A2",
+            },
+            fontFamily: {
+              display: ["'Plus Jakarta Sans'", "sans-serif"],
+              sans: ["'Inter'", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-sans bg-offwhite text-navy">
+    <!-- ══════════════════ NAVBAR ══════════════════ -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style="background: transparent"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+      >
+        <a
+          href="#home"
+          class="font-display font-black text-2xl text-white tracking-tight no-underline"
+        >
+          abi<span class="text-sky">.</span>
+        </a>
+
+        <div id="desktop-links" class="hidden md:flex items-center gap-7">
+          <a
+            href="#home"
+            data-section="home"
+            class="nav-link text-sm text-white/60 hover:text-white transition-colors pb-0.5 border-b-2 border-transparent"
+            >Home</a
+          >
+          <a
+            href="#about"
+            data-section="about"
+            class="nav-link text-sm text-white/60 hover:text-white transition-colors pb-0.5 border-b-2 border-transparent"
+            >About</a
+          >
+          <a
+            href="#features"
+            data-section="features"
+            class="nav-link text-sm text-white/60 hover:text-white transition-colors pb-0.5 border-b-2 border-transparent"
+            >Features</a
+          >
+          <a
+            href="#faq"
+            data-section="faq"
+            class="nav-link text-sm text-white/60 hover:text-white transition-colors pb-0.5 border-b-2 border-transparent"
+            >FAQ</a
+          >
+          <a
+            href="#privacy-policy"
+            data-section="privacy-policy"
+            class="nav-link text-sm text-white/60 hover:text-white transition-colors pb-0.5 border-b-2 border-transparent"
+            >Privacy Policy</a
+          >
+          <a
+            href="#contact"
+            data-section="contact"
+            class="nav-link text-sm text-white/60 hover:text-white transition-colors pb-0.5 border-b-2 border-transparent"
+            >Contact Us</a
+          >
+        </div>
+
+        <a href="#download">
+          <button
+            class="hidden md:flex items-center gap-2 bg-sky text-white text-sm font-display font-bold px-5 py-2.5 rounded-full hover:brightness-110 active:scale-95 transition-all"
+          >
+            Download App
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+        </a>
+
+        <button
+          id="menu-btn"
+          class="md:hidden text-white p-1"
+          aria-label="Toggle menu"
+        >
+          <svg
+            id="icon-menu"
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+          <svg
+            id="icon-close"
+            class="hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden px-6 pb-7 pt-1"
+        style="background: rgba(12, 30, 74, 0.98)"
+      >
+        <a
+          href="#home"
+          class="block py-3 text-sm text-white/60 hover:text-white border-b border-white/5"
+          >Home</a
+        >
+        <a
+          href="#about"
+          class="block py-3 text-sm text-white/60 hover:text-white border-b border-white/5"
+          >About</a
+        >
+        <a
+          href="#features"
+          class="block py-3 text-sm text-white/60 hover:text-white border-b border-white/5"
+          >Features</a
+        >
+        <a
+          href="#faq"
+          class="block py-3 text-sm text-white/60 hover:text-white border-b border-white/5"
+          >FAQ</a
+        >
+        <a
+          href="#privacy-policy"
+          class="block py-3 text-sm text-white/60 hover:text-white border-b border-white/5"
+          >Privacy Policy</a
+        >
+        <a
+          href="#contact"
+          class="block py-3 text-sm text-white/60 hover:text-white border-b border-white/5"
+          >Contact Us</a
+        >
+        <a href="#download">
+          <button
+            class="mt-5 w-full bg-sky text-white font-display font-bold text-sm py-3.5 rounded-full"
+          >
+            Download App
+          </button>
+        </a>
+      </div>
+    </nav>
+
+    <!-- ══════════════════ HERO ══════════════════ -->
+    <section
+      id="home"
+      class="hero-bg relative min-h-screen flex items-center overflow-hidden"
+    >
+      <div
+        class="absolute -top-28 -right-28 w-[550px] h-[550px] rounded-full opacity-10 pointer-events-none"
+        style="background: #0ea5e9"
+      ></div>
+      <div
+        class="absolute -bottom-16 -left-16 w-80 h-80 rounded-full opacity-5 pointer-events-none"
+        style="background: #fff"
+      ></div>
+      <div class="absolute inset-0 grid-overlay pointer-events-none"></div>
+      <div
+        class="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
+        style="background: linear-gradient(to bottom, transparent, #f4f7fc)"
+      ></div>
+
+      <div
+        class="max-w-6xl mx-auto px-6 w-full pt-28 pb-20 relative z-10 grid md:grid-cols-2 gap-16 items-center"
+      >
+        <div class="hero-load">
+          <div
+            class="inline-flex items-center gap-2 text-xs text-sky px-4 py-1.5 rounded-full mb-7"
+            style="
+              background: rgba(14, 165, 233, 0.12);
+              border: 1px solid rgba(14, 165, 233, 0.3);
+            "
+          >
+            <span class="w-1.5 h-1.5 rounded-full bg-mint"></span>
+            Peer-to-peer delivery network
+          </div>
+
+          <h1
+            class="font-display font-black text-white leading-[1.05] mb-6"
+            style="
+              font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+              letter-spacing: -1px;
+            "
+          >
+            Need something<br />delivered <span class="text-sky">fast</span> and
+            <span class="text-sky">cheap</span>?
+          </h1>
+
+          <p class="text-white/55 text-lg leading-relaxed mb-10 max-w-md">
+            Join ABI, the app that connects you with travellers who can deliver
+            your items on the go.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="#download">
+              <button
+                class="flex items-center gap-2 bg-white text-cobalt font-display font-bold text-sm px-8 py-4 rounded-full hover:scale-[1.03] active:scale-95 transition-transform"
+              >
+                DOWNLOAD APP
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </a>
+            <a
+              href="#about"
+              class="flex items-center font-display font-bold text-sm text-white/80 px-8 py-4 rounded-full border border-white/25 hover:bg-white/10 transition-colors"
+            >
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        <!-- Phone mockup -->
+        <div class="flex justify-center hero-load-right">
+          <div class="relative w-[248px] h-[500px]">
+            <div
+              class="phone-glow absolute -inset-5 rounded-full pointer-events-none"
+            ></div>
+            <div class="phone-frame absolute inset-0">
+              <div
+                class="flex justify-between px-5 pt-3 pb-1 text-white/45 text-[10px]"
+              >
+                <span>10:58</span><span>●●● WiFi</span>
+              </div>
+              <div class="flex justify-between items-center px-4 pb-2">
+                <div>
+                  <p class="text-white/45 text-[10px]">Hello</p>
+                  <p class="font-display font-bold text-white text-sm">
+                    Samuel
+                  </p>
+                </div>
+                <div
+                  class="w-9 h-9 rounded-full bg-sky flex items-center justify-center font-display font-black text-white text-sm"
+                >
+                  S
+                </div>
+              </div>
+              <div class="balance-card mx-3.5 mb-3 rounded-2xl p-3.5">
+                <p class="text-white/70 text-[10px]">My wallet Balance</p>
+                <p
+                  class="font-display font-black text-white text-2xl mt-0.5 mb-2"
+                >
+                  ₦ 0
+                </p>
+                <p class="text-white/70 text-[10px] flex items-center gap-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="9"
+                    height="9"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  In Jikwoyi Bustop Lagos
+                </p>
+              </div>
+              <p class="px-3.5 text-white/40 text-[10px] mb-2">
+                0 Available Parcels near you
+              </p>
+              <div class="px-3.5 space-y-2">
+                <div
+                  class="rounded-xl p-2.5 flex gap-2 items-start"
+                  style="
+                    background: rgba(255, 255, 255, 0.06);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                  "
+                >
+                  <div
+                    class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style="background: rgba(14, 165, 233, 0.2)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#0EA5E9"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                      />
+                      <polyline points="3.29 7 12 12 20.71 7" />
+                      <line x1="12" y1="22" x2="12" y2="12" />
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-white font-semibold text-[10px] truncate">
+                      Interstate Bus Park, Ojota
+                    </p>
+                    <p class="text-white/35 text-[9px] truncate">
+                      → Iwo Road, Ibadan
+                    </p>
+                  </div>
+                  <span
+                    class="font-display font-bold text-[10px] text-mint flex-shrink-0"
+                    >₦1,845</span
+                  >
+                </div>
+                <div
+                  class="rounded-xl p-2.5 flex gap-2 items-start"
+                  style="
+                    background: rgba(255, 255, 255, 0.06);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                  "
+                >
+                  <div
+                    class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style="background: rgba(14, 165, 233, 0.2)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#0EA5E9"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                      />
+                      <polyline points="3.29 7 12 12 20.71 7" />
+                      <line x1="12" y1="22" x2="12" y2="12" />
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-white font-semibold text-[10px] truncate">
+                      Yaba, Lagos
+                    </p>
+                    <p class="text-white/35 text-[9px] truncate">
+                      → UI Gate, Ibadan
+                    </p>
+                  </div>
+                  <span
+                    class="font-display font-bold text-[10px] text-mint flex-shrink-0"
+                    >₦2,200</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="absolute top-0 left-1/2 -translate-x-1/2 w-[72px] h-[22px] rounded-b-2xl"
+              style="background: #0c1e4a"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ ABOUT ══════════════════ -->
+    <section id="about" class="bg-white py-24 px-6">
+      <div class="max-w-3xl mx-auto text-center" data-animate="up">
+        <div class="flex flex-col items-center gap-2 mb-8">
+          <span
+            class="font-display font-black text-cobalt"
+            style="font-size: 52px; letter-spacing: -2px; line-height: 1"
+          >
+            abi<span class="text-sky">.</span>
+          </span>
+          <div
+            class="w-12 h-[3px] rounded-full"
+            style="background: linear-gradient(90deg, #1149a3, #0ea5e9)"
+          ></div>
+        </div>
+        <p
+          class="text-xs font-semibold tracking-[0.2em] uppercase text-cobalt mb-8"
+        >
+          ABOUT ABI
+        </p>
+        <p
+          class="font-display font-extrabold text-cobalt leading-[1.55] mb-7"
+          style="font-size: clamp(1.25rem, 2.8vw, 1.85rem)"
+        >
+          ABI is a peer-to-peer delivery network that lets you post a delivery
+          request and get matched with a traveller heading to your destination.
+          You can choose to pay them a fee or offer them a favor in return.
+        </p>
+        <p class="text-[#5A6B8A] text-[15px] leading-[1.8] max-w-xl mx-auto">
+          When you need to send a parcel to a friend or relative across the
+          country, ABI App helps you find a reliable and affordable delivery
+          partner.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════ APP SHOWCASE ══════════════════ -->
+    <section class="bg-offwhite py-24 px-6">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div data-animate="left">
+          <p
+            class="text-xs font-semibold tracking-[0.2em] uppercase text-sky mb-5"
+          >
+            ABI APP
+          </p>
+          <h2
+            class="font-display font-black text-navy leading-[1.15] mb-5"
+            style="font-size: clamp(2rem, 3.5vw, 2.75rem)"
+          >
+            The easiest way to deliver anything, anywhere.
+          </h2>
+          <p class="text-[#5A6B8A] text-[15px] leading-[1.8]">
+            Download our app today and join our community of happy senders and
+            travellers.
+          </p>
+        </div>
+        <div class="flex justify-center" data-animate="right">
+          <div class="relative w-[248px] h-[500px]">
+            <div
+              class="phone-glow absolute -inset-5 rounded-full pointer-events-none"
+            ></div>
+            <div
+              class="absolute inset-0 rounded-[2.8rem] overflow-hidden"
+              style="
+                background: #1149a3;
+                border: 5px solid rgba(255, 255, 255, 0.2);
+                box-shadow: 0 32px 80px rgba(0, 0, 0, 0.3);
+              "
+            >
+              <div
+                class="flex justify-between px-5 pt-3 pb-1 text-white/45 text-[10px]"
+              >
+                <span>10:58</span><span>●●● WiFi</span>
+              </div>
+              <div class="flex justify-between items-center px-4 pb-2">
+                <div>
+                  <p class="text-white/45 text-[10px]">Hello</p>
+                  <p class="font-display font-bold text-white text-sm">
+                    Samuel
+                  </p>
+                </div>
+                <div
+                  class="w-9 h-9 rounded-full bg-sky flex items-center justify-center font-display font-black text-white text-sm"
+                >
+                  S
+                </div>
+              </div>
+              <div
+                class="mx-3.5 mb-3 rounded-2xl p-3.5"
+                style="
+                  background: rgba(255, 255, 255, 0.15);
+                  border: 1px solid rgba(255, 255, 255, 0.25);
+                "
+              >
+                <p class="text-white/70 text-[10px]">My wallet Balance</p>
+                <p
+                  class="font-display font-black text-white text-2xl mt-0.5 mb-2"
+                >
+                  ₦ 0
+                </p>
+                <p class="text-white/70 text-[10px]">
+                  📍 In Jikwoyi Bustop Lagos
+                </p>
+              </div>
+              <p class="px-3.5 text-white/40 text-[10px] mb-2">
+                0 Available Parcels near you
+              </p>
+              <div class="px-3.5 space-y-2">
+                <div
+                  class="rounded-xl p-2.5 flex gap-2 items-start"
+                  style="
+                    background: rgba(255, 255, 255, 0.15);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                  "
+                >
+                  <div
+                    class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style="background: rgba(255, 255, 255, 0.2)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-white font-semibold text-[10px] truncate">
+                      Interstate Bus Park, Ojota
+                    </p>
+                    <p class="text-white/50 text-[9px]">→ Iwo Road, Ibadan</p>
+                  </div>
+                  <span class="font-bold text-[10px] text-mint">₦1,845</span>
+                </div>
+                <div
+                  class="rounded-xl p-2.5 flex gap-2 items-start"
+                  style="
+                    background: rgba(255, 255, 255, 0.15);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                  "
+                >
+                  <div
+                    class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style="background: rgba(255, 255, 255, 0.2)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-white font-semibold text-[10px] truncate">
+                      Yaba, Lagos
+                    </p>
+                    <p class="text-white/50 text-[9px]">→ UI Gate, Ibadan</p>
+                  </div>
+                  <span class="font-bold text-[10px] text-mint">₦2,200</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="absolute top-0 left-1/2 -translate-x-1/2 w-[72px] h-[22px] rounded-b-2xl"
+              style="background: #1149a3"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ FEATURES ══════════════════ -->
+    <section id="features" class="bg-white py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-14" data-animate="up">
+          <p
+            class="text-xs font-semibold tracking-[0.2em] uppercase text-sky mb-3"
+          >
+            FEATURES
+          </p>
+          <h2
+            class="font-display font-black text-navy"
+            style="font-size: clamp(2rem, 3.5vw, 2.75rem)"
+          >
+            Powerful Features As Always
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-[1fr_auto_1fr] gap-5 items-center">
+          <!-- Left -->
+          <div class="space-y-4">
+            <div
+              class="feat-card bg-white border border-cobalt/10 rounded-2xl p-5 flex gap-4"
+            >
+              <div
+                class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(17, 73, 163, 0.1)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1149A3"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-display font-bold text-navy text-sm mb-1">
+                  Fast Delivery
+                </p>
+                <p class="text-[#5A6B8A] text-xs leading-relaxed">
+                  No need to wait for other parcels going your route.
+                </p>
+              </div>
+            </div>
+            <div
+              class="feat-card bg-white border border-cobalt/10 rounded-2xl p-5 flex gap-4"
+            >
+              <div
+                class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(14, 165, 233, 0.1)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0EA5E9"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-display font-bold text-navy text-sm mb-1">
+                  Preferred Travellers
+                </p>
+                <p class="text-[#5A6B8A] text-xs leading-relaxed">
+                  You can select who you want to deliver your parcel.
+                </p>
+              </div>
+            </div>
+            <div
+              class="feat-card bg-white border border-cobalt/10 rounded-2xl p-5 flex gap-4"
+            >
+              <div
+                class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(59, 130, 246, 0.1)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#3B82F6"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-display font-bold text-navy text-sm mb-1">
+                  Real-time Tracking and Communication
+                </p>
+                <p class="text-[#5A6B8A] text-xs leading-relaxed">
+                  You can easily track your parcel from pickup to delivery.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Centre phone -->
+          <div class="hidden md:flex justify-center px-3" data-animate="scale">
+            <div class="relative w-[220px] h-[460px]">
+              <div
+                class="phone-glow absolute -inset-5 rounded-full pointer-events-none"
+              ></div>
+              <div class="phone-frame absolute inset-0">
+                <div
+                  class="flex justify-between px-5 pt-3 pb-1 text-white/45 text-[10px]"
+                >
+                  <span>10:59</span><span>●●●</span>
+                </div>
+                <div class="px-4 pb-1">
+                  <p class="font-display font-bold text-white text-sm">To Do</p>
+                </div>
+                <div class="balance-card mx-3 mb-3 rounded-xl p-2.5">
+                  <p class="text-white/70 text-[9px]">
+                    Parcels you are sending or delivering
+                  </p>
+                </div>
+                <p class="px-3 text-white/40 text-[9px] mb-1">
+                  Mug (Large) · Pick up: Tue Jan 31 2023
+                </p>
+                <div class="px-3 space-y-1.5">
+                  <div
+                    class="rounded-lg p-2"
+                    style="
+                      background: rgba(255, 255, 255, 0.05);
+                      border: 1px solid rgba(255, 255, 255, 0.08);
+                    "
+                  >
+                    <p class="text-white text-[9px] font-semibold">
+                      From: Interstate Bus Park, Ojota
+                    </p>
+                    <p class="text-white/40 text-[8px]">Arrange with Sender</p>
+                  </div>
+                  <div
+                    class="rounded-lg p-2"
+                    style="
+                      background: rgba(255, 255, 255, 0.05);
+                      border: 1px solid rgba(255, 255, 255, 0.08);
+                    "
+                  >
+                    <p class="text-white text-[9px] font-semibold">
+                      To: Iwo Road, Ibadan
+                    </p>
+                    <p class="text-white/40 text-[8px]">
+                      Arrange with Receiver
+                    </p>
+                  </div>
+                  <div class="flex justify-between py-1">
+                    <span class="text-mint text-[9px] font-bold"
+                      >Reward ₦1,845</span
+                    >
+                    <span class="text-white/40 text-[9px]">Code: 123456</span>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <div
+                      class="w-5 h-5 rounded-full bg-sky/30 flex items-center justify-center text-sky text-[8px] font-bold"
+                    >
+                      R
+                    </div>
+                    <p class="text-white text-[9px]">Rich Funso</p>
+                    <span class="text-yellow-400 text-[8px]">★★★</span>
+                  </div>
+                  <button
+                    class="w-full bg-sky text-white text-[9px] font-bold py-1.5 rounded-lg mt-1"
+                  >
+                    Approve Request
+                  </button>
+                </div>
+              </div>
+              <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-5 rounded-b-xl"
+                style="background: #0c1e4a"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="space-y-4">
+            <div
+              class="feat-card bg-white border border-cobalt/10 rounded-2xl p-5 flex gap-4"
+            >
+              <div
+                class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(245, 158, 11, 0.1)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#F59E0B"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-display font-bold text-navy text-sm mb-1">
+                  Easy Notifications
+                </p>
+                <p class="text-[#5A6B8A] text-xs leading-relaxed">
+                  You are notified of the status of your parcel at every
+                  milestone.
+                </p>
+              </div>
+            </div>
+            <div
+              class="feat-card bg-white border border-cobalt/10 rounded-2xl p-5 flex gap-4"
+            >
+              <div
+                class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(16, 185, 129, 0.1)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#10B981"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-display font-bold text-navy text-sm mb-1">
+                  Secure Transactions
+                </p>
+                <p class="text-[#5A6B8A] text-xs leading-relaxed">
+                  You can easily receive your payment to your wallet without any
+                  issue or delay.
+                </p>
+              </div>
+            </div>
+            <div
+              class="feat-card bg-white border border-cobalt/10 rounded-2xl p-5 flex gap-4"
+            >
+              <div
+                class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background: rgba(124, 58, 237, 0.1)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#7C3AED"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                  <line x1="9" y1="9" x2="9.01" y2="9" />
+                  <line x1="15" y1="9" x2="15.01" y2="9" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-display font-bold text-navy text-sm mb-1">
+                  Easy to use
+                </p>
+                <p class="text-[#5A6B8A] text-xs leading-relaxed">
+                  It is easy to use the app and navigate around.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ SEND WITH EASE ══════════════════ -->
+    <section class="bg-offwhite py-24 px-6">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+        <div data-animate="left">
+          <p
+            class="text-xs font-semibold tracking-[0.2em] uppercase text-sky mb-5"
+          >
+            OUR FEATURES
+          </p>
+          <h2
+            class="font-display font-black text-navy leading-[1.15] mb-4"
+            style="font-size: clamp(2rem, 3.5vw, 2.75rem)"
+          >
+            Send your item with ease
+          </h2>
+          <p class="text-[#5A6B8A] text-[15px] leading-[1.8] mb-12">
+            When you need to send a parcel to a friend or relative across the
+            country, Abi App helps you find a reliable and affordable delivery
+            partner.
+          </p>
+          <div class="space-y-7">
+            <div class="flex gap-5">
+              <div
+                class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                style="background: linear-gradient(135deg, #1149a3, #0ea5e9)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-display font-bold text-navy text-[15px] mb-1">
+                  Same day or overnight delivery
+                </p>
+                <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                  You can send your parcel and get it delivered same day.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-5">
+              <div
+                class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                style="background: linear-gradient(135deg, #1149a3, #0ea5e9)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                  <line x1="1" y1="10" x2="23" y2="10" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-display font-bold text-navy text-[15px] mb-1">
+                  Flexible Payment Options
+                </p>
+                <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                  Make payments on the app easily without any hassle.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-5">
+              <div
+                class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                style="background: linear-gradient(135deg, #1149a3, #0ea5e9)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                  />
+                  <polyline points="3.29 7 12 12 20.71 7" />
+                  <line x1="12" y1="22" x2="12" y2="12" />
+                </svg>
+              </div>
+              <div>
+                <p class="font-display font-bold text-navy text-[15px] mb-1">
+                  Send Parcels for Less
+                </p>
+                <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                  It is much more affordable than traditional courier services.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats card -->
+        <div
+          class="rounded-3xl p-10 relative overflow-hidden"
+          data-animate="right"
+          style="background: linear-gradient(135deg, #0c1e4a, #1149a3)"
+        >
+          <div
+            class="absolute -top-14 -right-14 w-60 h-60 rounded-full pointer-events-none"
+            style="background: rgba(14, 165, 233, 0.12)"
+          ></div>
+          <div class="relative z-10">
+            <div
+              class="w-14 h-14 rounded-2xl bg-sky flex items-center justify-center mb-7"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                />
+              </svg>
+            </div>
+            <p
+              class="font-display font-black text-white leading-none mb-1"
+              style="font-size: 3rem"
+            >
+              50K+
+            </p>
+            <p class="text-white/40 text-sm mb-9">
+              Parcels delivered across Nigeria
+            </p>
+            <div class="grid grid-cols-2 gap-3">
+              <div
+                class="rounded-2xl p-4"
+                style="
+                  background: rgba(255, 255, 255, 0.07);
+                  border: 1px solid rgba(255, 255, 255, 0.08);
+                "
+              >
+                <p class="font-display font-black text-mint text-lg">4.8★</p>
+                <p class="text-white/35 text-[11px]">App Store</p>
+              </div>
+              <div
+                class="rounded-2xl p-4"
+                style="
+                  background: rgba(255, 255, 255, 0.07);
+                  border: 1px solid rgba(255, 255, 255, 0.08);
+                "
+              >
+                <p class="font-display font-black text-mint text-lg">4.7★</p>
+                <p class="text-white/35 text-[11px]">Play Store</p>
+              </div>
+              <div
+                class="rounded-2xl p-4"
+                style="
+                  background: rgba(255, 255, 255, 0.07);
+                  border: 1px solid rgba(255, 255, 255, 0.08);
+                "
+              >
+                <p class="font-display font-black text-mint text-lg">10K+</p>
+                <p class="text-white/35 text-[11px]">Happy users</p>
+              </div>
+              <div
+                class="rounded-2xl p-4"
+                style="
+                  background: rgba(255, 255, 255, 0.07);
+                  border: 1px solid rgba(255, 255, 255, 0.08);
+                "
+              >
+                <p class="font-display font-black text-mint text-lg">&lt;1hr</p>
+                <p class="text-white/35 text-[11px]">Avg. match</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ FAQ ══════════════════ -->
+    <section id="faq" class="bg-white py-24 px-6">
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-14" data-animate="up">
+          <p
+            class="text-xs font-semibold tracking-[0.2em] uppercase text-sky mb-3"
+          >
+            FAQ
+          </p>
+          <h2
+            class="font-display font-black text-navy"
+            style="font-size: clamp(2rem, 3.5vw, 2.75rem)"
+          >
+            Common questions.
+          </h2>
+        </div>
+        <div class="space-y-3">
+          <div
+            class="faq-item rounded-2xl overflow-hidden border border-cobalt/7 bg-offwhite hover:shadow-md transition-shadow"
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between text-left px-6 py-5 gap-4 bg-transparent border-0 cursor-pointer"
+            >
+              <span class="font-display font-bold text-navy text-[15px]"
+                >How does ABI work?</span
+              >
+              <svg
+                class="faq-icon flex-shrink-0 text-sky"
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div
+              class="faq-body px-6 pb-5 text-[#5A6B8A] text-sm leading-[1.75]"
+            >
+              Post a delivery request with your pickup and drop-off location.
+              Travellers heading that direction can accept your request and
+              deliver your parcel on the way to their destination.
+            </div>
+          </div>
+
+          <div
+            class="faq-item rounded-2xl overflow-hidden border border-cobalt/7 bg-offwhite hover:shadow-md transition-shadow"
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between text-left px-6 py-5 gap-4 bg-transparent border-0 cursor-pointer"
+            >
+              <span class="font-display font-bold text-navy text-[15px]"
+                >Is my parcel safe with a traveller?</span
+              >
+              <svg
+                class="faq-icon flex-shrink-0 text-sky"
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div
+              class="faq-body px-6 pb-5 text-[#5A6B8A] text-sm leading-[1.75]"
+            >
+              All travellers are verified, rated, and reviewed by the community.
+              You can review their history and ratings before confirming —
+              you're always in control.
+            </div>
+          </div>
+
+          <div
+            class="faq-item rounded-2xl overflow-hidden border border-cobalt/7 bg-offwhite hover:shadow-md transition-shadow"
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between text-left px-6 py-5 gap-4 bg-transparent border-0 cursor-pointer"
+            >
+              <span class="font-display font-bold text-navy text-[15px]"
+                >How do I pay for a delivery?</span
+              >
+              <svg
+                class="faq-icon flex-shrink-0 text-sky"
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div
+              class="faq-body px-6 pb-5 text-[#5A6B8A] text-sm leading-[1.75]"
+            >
+              Payments are made securely via your ABI wallet. Funds are held in
+              escrow and only released to the traveller after you confirm
+              delivery.
+            </div>
+          </div>
+
+          <div
+            class="faq-item rounded-2xl overflow-hidden border border-cobalt/7 bg-offwhite hover:shadow-md transition-shadow"
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between text-left px-6 py-5 gap-4 bg-transparent border-0 cursor-pointer"
+            >
+              <span class="font-display font-bold text-navy text-[15px]"
+                >What items can I send?</span
+              >
+              <svg
+                class="faq-icon flex-shrink-0 text-sky"
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div
+              class="faq-body px-6 pb-5 text-[#5A6B8A] text-sm leading-[1.75]"
+            >
+              Most everyday items — documents, clothing, electronics, and gifts.
+              No hazardous materials, controlled substances, or illegal goods.
+            </div>
+          </div>
+
+          <div
+            class="faq-item rounded-2xl overflow-hidden border border-cobalt/7 bg-offwhite hover:shadow-md transition-shadow"
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between text-left px-6 py-5 gap-4 bg-transparent border-0 cursor-pointer"
+            >
+              <span class="font-display font-bold text-navy text-[15px]"
+                >How do I find a traveller going my route?</span
+              >
+              <svg
+                class="faq-icon flex-shrink-0 text-sky"
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+            <div
+              class="faq-body px-6 pb-5 text-[#5A6B8A] text-sm leading-[1.75]"
+            >
+              Once you post a request, ABI automatically shows travellers
+              heading to your destination. Browse by name, rating, or pickup
+              date.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ DOWNLOAD ══════════════════ -->
+    <section
+      id="download"
+      class="section-bg py-24 px-6 relative overflow-hidden"
+    >
+      <div
+        class="absolute -top-20 -right-20 w-96 h-96 rounded-full opacity-10 pointer-events-none"
+        style="background: #0ea5e9"
+      ></div>
+      <div
+        class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10"
+      >
+        <div data-animate="left">
+          <h2
+            class="font-display font-black text-white leading-[1.1] mb-5"
+            style="font-size: clamp(2.2rem, 4vw, 3.5rem)"
+          >
+            Download ABI App
+          </h2>
+          <p class="text-white/55 text-base leading-[1.75] mb-10 max-w-md">
+            Download ABI App today and join our growing community of happy
+            senders and travellers.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <button
+              class="flex items-center gap-3 px-5 py-3.5 rounded-2xl hover:brightness-110 transition-all"
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                border: 1.5px solid rgba(255, 255, 255, 0.2);
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="white"
+              >
+                <path
+                  d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                />
+              </svg>
+              <div class="text-left">
+                <p class="text-white/50 text-[10px]">Download on the</p>
+                <p class="font-display font-bold text-white text-sm">
+                  APPLE STORE
+                </p>
+              </div>
+            </button>
+            <button
+              class="flex items-center gap-3 px-5 py-3.5 rounded-2xl hover:brightness-110 transition-all"
+              style="
+                background: rgba(255, 255, 255, 0.1);
+                border: 1.5px solid rgba(255, 255, 255, 0.2);
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="white"
+              >
+                <path
+                  d="M3.18 23.76c.3.17.64.22.98.14l.07-.04 10.85-6.27-2.35-2.36-9.55 8.53zM.47 2.26C.17 2.6 0 3.1 0 3.74v16.52c0 .64.17 1.14.47 1.48l.08.07 9.25-9.25v-.22L.55 2.19l-.08.07zM20.6 10.28l-2.6-1.5-2.6 2.6 2.6 2.6 2.62-1.51c.75-.43.75-1.13-.02-1.19zM4.16.24L15 6.51l-2.35 2.35L3.1.33c.34-.2.72-.21 1.06-.09z"
+                />
+              </svg>
+              <div class="text-left">
+                <p class="text-white/50 text-[10px]">Get it on</p>
+                <p class="font-display font-bold text-white text-sm">
+                  PLAY STORE
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+        <!-- Offers phone -->
+        <div class="flex justify-center" data-animate="right">
+          <div class="relative w-[248px] h-[500px]">
+            <div
+              class="phone-glow absolute -inset-5 rounded-full pointer-events-none"
+            ></div>
+            <div class="phone-frame absolute inset-0">
+              <div
+                class="flex justify-between px-5 pt-3 pb-1 text-white/45 text-[10px]"
+              >
+                <span>10:59</span><span>●●● WiFi</span>
+              </div>
+              <div class="flex items-center justify-between px-4 py-2">
+                <p class="font-display font-bold text-white text-base">
+                  Offers
+                </p>
+                <div class="flex gap-2">
+                  <div class="flex flex-col items-center gap-0.5">
+                    <div
+                      class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="11"
+                        height="11"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="2"
+                      >
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                      </svg>
+                    </div>
+                    <span class="text-white/40 text-[8px]">Search</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-0.5">
+                    <div
+                      class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="11"
+                        height="11"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="white"
+                        stroke-width="2"
+                      >
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                      </svg>
+                    </div>
+                    <span class="text-white/40 text-[8px]">Help</span>
+                  </div>
+                  <div class="flex flex-col items-center gap-0.5">
+                    <div
+                      class="w-6 h-6 rounded-full bg-sky flex items-center justify-center text-white text-[9px] font-bold"
+                    >
+                      S
+                    </div>
+                    <span class="text-white/40 text-[8px]">Profile</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mx-3.5 mb-5 rounded-xl px-3 py-2"
+                style="
+                  background: rgba(255, 255, 255, 0.08);
+                  border: 1px solid rgba(255, 255, 255, 0.1);
+                "
+              >
+                <p class="text-white/40 text-[10px]">
+                  Search for Parcels to deliver
+                </p>
+              </div>
+              <div
+                class="flex flex-col items-center justify-center px-6 text-center mt-4"
+              >
+                <div
+                  class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-4"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="rgba(255,255,255,0.4)"
+                    stroke-width="1.5"
+                  >
+                    <path
+                      d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                    />
+                  </svg>
+                </div>
+                <p class="font-display font-bold text-white text-sm mb-1">
+                  No Parcel Yet
+                </p>
+                <p class="text-white/40 text-[10px] mb-4">
+                  Kindly filter by date to get the appropriate parcels.
+                </p>
+                <button
+                  class="bg-sky text-white text-[10px] font-bold px-5 py-2 rounded-lg"
+                >
+                  SEARCH PARCELS
+                </button>
+              </div>
+            </div>
+            <div
+              class="absolute top-0 left-1/2 -translate-x-1/2 w-[72px] h-[22px] rounded-b-2xl"
+              style="background: #0c1e4a"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY BANNER -->
+    <section id="privacy-policy">
+      <div class="hero-bg pt-28 pb-16 px-6 relative overflow-hidden">
+        <div
+          class="absolute -top-16 -right-16 w-80 h-80 rounded-full opacity-10 pointer-events-none"
+          style="background: #0ea5e9"
+        ></div>
+        <div class="max-w-3xl mx-auto relative z-10" data-animate="up">
+          <p
+            class="text-xs font-semibold tracking-[0.2em] uppercase text-sky mb-4"
+          >
+            Legal
+          </p>
+          <h1
+            class="font-display font-black text-white mb-3"
+            style="font-size: clamp(2rem, 4vw, 3.2rem)"
+          >
+            PRIVACY NOTICE
+          </h1>
+          <p class="text-white/50 text-sm">Last updated January 07, 2025</p>
+        </div>
+      </div>
+
+      <!-- INTRO -->
+      <div class="bg-offwhite border-b border-cobalt/8 py-10 px-6">
+        <div class="max-w-3xl mx-auto">
+          <p class="text-[#3B4758] text-[15px] leading-[1.85] mb-4">
+            This privacy notice for Tomikigai ('Company', 'we', 'us', or 'our'),
+            describes how and why we might collect, store, use, and/or share
+            ('process') your information when you use our services, such as when
+            you:
+          </p>
+          <ul class="text-[#5A6B8A] text-sm leading-[2] list-disc pl-5 mb-4">
+            <li>
+              Visit our website at Tomikigai.com, or any website of ours that
+              links to this privacy notice
+            </li>
+            <li>
+              Download and use our mobile application (Abi App), or any other
+              application of ours that links to this privacy notice
+            </li>
+            <li>
+              Engage with us in other related ways, including any sales,
+              marketing, or events
+            </li>
+          </ul>
+          <p class="text-[#5A6B8A] text-sm leading-[1.85]">
+            Questions or concerns? Reading this privacy notice will help you
+            understand your privacy rights and choices. If you do not agree with
+            our policies and practices, please do not use our Services. Contact
+            us at
+            <a
+              href="mailto:info@tomikigai.com"
+              class="text-cobalt font-semibold hover:underline"
+              >info@tomikigai.com</a
+            >.
+          </p>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="max-w-3xl mx-auto px-6 py-16">
+        <!-- Summary box -->
+        <div class="bg-offwhite rounded-2xl p-8 mb-14 border border-cobalt/8">
+          <p
+            class="text-xs font-semibold tracking-[0.15em] uppercase text-sky mb-4"
+          >
+            Summary of Key Points
+          </p>
+          <p class="text-[#5A6B8A] text-sm leading-[1.8] mb-7">
+            This summary provides key points from our privacy notice. Use the
+            sections below to find more detail on any topic.
+          </p>
+          <div class="space-y-5">
+            <div class="border-l-[3px] border-sky pl-4">
+              <p class="font-display font-bold text-navy text-sm mb-1">
+                What personal information do we process?
+              </p>
+              <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                We may process personal information depending on how you
+                interact with our Services, the choices you make, and the
+                products and features you use.
+              </p>
+            </div>
+            <div class="border-l-[3px] border-sky pl-4">
+              <p class="font-display font-bold text-navy text-sm mb-1">
+                Do we process any sensitive personal information?
+              </p>
+              <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                We may process sensitive personal information when necessary
+                with your consent or as otherwise permitted by applicable law.
+              </p>
+            </div>
+            <div class="border-l-[3px] border-sky pl-4">
+              <p class="font-display font-bold text-navy text-sm mb-1">
+                Do we receive any information from third parties?
+              </p>
+              <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                We do not receive any information from third parties.
+              </p>
+            </div>
+            <div class="border-l-[3px] border-sky pl-4">
+              <p class="font-display font-bold text-navy text-sm mb-1">
+                How do we process your information?
+              </p>
+              <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                We process your information to provide, improve, and administer
+                our Services, for security and fraud prevention, and to comply
+                with the law. We process your information only when we have a
+                valid legal reason to do so.
+              </p>
+            </div>
+            <div class="border-l-[3px] border-sky pl-4">
+              <p class="font-display font-bold text-navy text-sm mb-1">
+                How do we keep your information safe?
+              </p>
+              <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                We have organisational and technical processes in place to
+                protect your personal information. However, no electronic
+                transmission over the internet can be guaranteed to be 100%
+                secure.
+              </p>
+            </div>
+            <div class="border-l-[3px] border-sky pl-4">
+              <p class="font-display font-bold text-navy text-sm mb-1">
+                How do you exercise your rights?
+              </p>
+              <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                Contact us at
+                <a
+                  href="mailto:info@tomikigai.com"
+                  class="text-cobalt font-semibold hover:underline"
+                  >info@tomikigai.com</a
+                >. We will consider and act upon any request in accordance with
+                applicable data protection laws.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sections -->
+        <div class="space-y-12">
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              1. WHAT INFORMATION DO WE COLLECT?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9] mb-4">
+              We collect personal information that you voluntarily provide when
+              you register on the Services, express interest in our products, or
+              otherwise contact us. This may include: names, phone numbers,
+              email addresses, mailing addresses, usernames, passwords, billing
+              addresses, and debit/credit card numbers.
+            </p>
+            <p class="text-[#4B5B75] text-sm leading-[1.9] mb-4">
+              We may also process sensitive information such as biometric data,
+              when necessary with your consent.
+            </p>
+            <p class="text-[#4B5B75] text-sm leading-[1.9] mb-4">
+              If you use our application, we may collect geolocation
+              information, mobile device access permissions, and device data
+              (device ID, model, OS, browser type).
+            </p>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              We also automatically collect certain information when you use our
+              Services, such as IP address, browser characteristics, and log
+              data. This information is primarily needed to maintain security
+              and for internal analytics.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              2. HOW DO WE PROCESS YOUR INFORMATION?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9] mb-4">
+              We process your information to provide, improve, and administer
+              our Services, communicate with you, for security and fraud
+              prevention, and to comply with the law.
+            </p>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              We process your information only when we have a valid legal reason
+              to do so, such as to facilitate account creation, manage user
+              accounts, or protect an individual's vital interest.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              3. WHAT LEGAL BASES DO WE RELY ON?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              We only process your personal information when we believe it is
+              necessary and we have a valid legal reason — such as with your
+              consent, to comply with laws, to provide services, to fulfil
+              contractual obligations, to protect your rights, or to fulfil our
+              legitimate business interests.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9] mb-4">
+              <strong class="text-navy">Business Transfers:</strong> We may
+              share or transfer your information in connection with any merger,
+              sale of company assets, financing, or acquisition.
+            </p>
+            <p class="text-[#4B5B75] text-sm leading-[1.9] mb-4">
+              <strong class="text-navy">Google Maps Platform APIs:</strong> We
+              may share your information with certain Google Maps Platform APIs
+              to retrieve location-specific information.
+            </p>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              <strong class="text-navy">Affiliates:</strong> We may share your
+              information with our affiliates, who are required to honour this
+              privacy notice.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              5. WHAT IS OUR STANCE ON THIRD-PARTY WEBSITES?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              We are not responsible for the safety of any information that you
+              share with third parties that we may link to or who advertise on
+              our Services. The inclusion of a link towards a third-party
+              website does not imply an endorsement by us.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              6. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              We may use cookies and similar tracking technologies (like web
+              beacons and pixels) to access or store information. Specific
+              information about how we use such technologies is set out in our
+              Cookie Notice.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              7. HOW LONG DO WE KEEP YOUR INFORMATION?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              We will only keep your personal information for as long as it is
+              necessary for the purposes set out in this privacy notice, unless
+              a longer retention period is required by law. When we have no
+              ongoing legitimate business need to process your personal
+              information, we will delete or anonymise it.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              8. HOW DO WE KEEP YOUR INFORMATION SAFE?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              We have implemented appropriate technical and organisational
+              security measures designed to protect the security of any personal
+              information we process. However, transmission of personal
+              information to and from our Services is at your own risk and you
+              should only access the Services within a secure environment.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              9. DO WE COLLECT INFORMATION FROM MINORS?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              We do not knowingly solicit data from or market to children under
+              18 years of age. By using the Services, you represent that you are
+              at least 18. If you become aware of any data we may have collected
+              from children under age 18, please contact us at
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@tomikigai.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-cobalt font-semibold hover:underline"
+                >info@tomikigai.com</a
+              >.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              10. WHAT ARE YOUR PRIVACY RIGHTS?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9] mb-4">
+              You have the right to access, correct, or delete your personal
+              information, request restriction or objection to processing, and
+              the right to data portability.
+            </p>
+            <p class="text-[#4B5B75] text-sm leading-[1.9] mb-4">
+              You may withdraw consent at any time by contacting us. This will
+              not affect the lawfulness of processing before its withdrawal.
+            </p>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              <strong class="text-navy">Account Information:</strong> You can
+              log in to your account settings to update your information. Upon
+              request to terminate your account, we will deactivate or delete
+              your account from our active databases.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              11. CONTROLS FOR DO-NOT-TRACK FEATURES
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              Most web browsers include a Do-Not-Track ('DNT') feature. At this
+              stage no uniform technology standard for recognising DNT signals
+              has been finalised. As such, we do not currently respond to DNT
+              browser signals. If a standard is adopted that we must follow, we
+              will inform you in a revised version of this notice.
+            </p>
+          </div>
+
+          <div class="pb-12 border-b border-cobalt/7">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              12. DO WE MAKE UPDATES TO THIS NOTICE?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              We may update this privacy notice from time to time. The updated
+              version will be indicated by an updated 'Revised' date and will be
+              effective as soon as it is accessible. We encourage you to review
+              this privacy notice frequently.
+            </p>
+          </div>
+
+          <div class="pb-12">
+            <h2 class="font-display font-bold text-navy text-lg mb-5">
+              13. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?
+            </h2>
+            <p class="text-[#4B5B75] text-sm leading-[1.9]">
+              If you have questions or comments about this notice, you may email
+              us at
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@tomikigai.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-cobalt font-semibold hover:underline"
+                >info@tomikigai.com</a
+              >.
+            </p>
+          </div>
+        </div>
+
+        <!-- CTA card -->
+        <div
+          class="rounded-2xl p-10 text-center mt-4"
+          style="background: linear-gradient(135deg, #0c1e4a, #1149a3)"
+        >
+          <h3 class="font-display font-bold text-white text-xl mb-3">
+            Want to exercise your rights?
+          </h3>
+          <p class="text-white/50 text-sm mb-6">
+            Contact Tomikigai and we will respond in accordance with applicable
+            data protection laws.
+          </p>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@tomikigai.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block bg-sky text-white font-display font-bold text-sm px-7 py-3 rounded-full hover:brightness-110 transition-all"
+          >
+            info@tomikigai.com
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ CONTACT US ══════════════════ -->
+    <section id="contact" class="bg-white py-24 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div
+          class="flex items-center gap-4 justify-center mb-16"
+          data-animate="up"
+        >
+          <div class="h-px flex-1 bg-cobalt/10"></div>
+          <p
+            class="text-xs font-semibold tracking-[0.25em] uppercase text-cobalt"
+          >
+            CONTACT US
+          </p>
+          <div class="h-px flex-1 bg-cobalt/10"></div>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-10 text-center">
+          <!-- Address -->
+          <div class="flex flex-col items-center gap-4">
+            <div
+              class="w-16 h-16 rounded-full flex items-center justify-center"
+              style="background: linear-gradient(135deg, #1149a3, #4b6fd4)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                22 Adeola Hopewell
+              </p>
+              <p class="text-[#5A6B8A] text-sm leading-relaxed">
+                Victoria Island, Lagos, Nigeria
+              </p>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="flex flex-col items-center gap-4">
+            <div
+              class="w-16 h-16 rounded-full flex items-center justify-center"
+              style="background: linear-gradient(135deg, #1149a3, #4b6fd4)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.55 5.55l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+            </div>
+            <div>
+              <p class="text-[#5A6B8A] font-sans text-sm">+234 8035753909</p>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="flex flex-col items-center gap-4">
+            <div
+              class="w-16 h-16 rounded-full flex items-center justify-center"
+              style="background: linear-gradient(135deg, #1149a3, #4b6fd4)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div class="space-y-2">
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=abiapp@tomikigai.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#5A6B8A] text-sm font-sans hover:underline"
+                >abiapp@tomikigai.com</a
+              >
+
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=info@tomikigai.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#5A6B8A] text-sm font-sans hover:underline"
+                >info@tomikigai.com</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ FOOTER ══════════════════ -->
+    <footer class="bg-navy py-8 px-6">
+      <div
+        class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <p class="text-white/35 text-sm">
+          Copyright © 2026 All rights reserved
+        </p>
+        <div class="flex items-center gap-6">
+          <a
+            href="#about"
+            class="text-white/45 hover:text-white text-sm transition-colors"
+            >About</a
+          >
+          <a
+            href="#faq"
+            class="text-white/45 hover:text-white text-sm transition-colors"
+            >FAQ</a
+          >
+          <a
+            href="#features"
+            class="text-white/45 hover:text-white text-sm transition-colors"
+            >Features</a
+          >
+          <a
+            href="#contact"
+            class="text-white/45 hover:text-white text-sm transition-colors"
+            >Contacts</a
+          >
+          <a
+            href="#privacy-policy.html"
+            class="text-white/45 hover:text-white text-sm transition-colors"
+            >Privacy Policy</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

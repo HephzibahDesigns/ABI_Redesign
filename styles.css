@@ -1,0 +1,175 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.hero-bg {
+  background: linear-gradient(135deg, #0c1e4a 0%, #1149a3 55%, #1e6fb5 100%);
+}
+.section-bg {
+  background: linear-gradient(135deg, #0d2560 0%, #1149a3 100%);
+}
+
+.grid-overlay {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.phone-frame {
+  background: #0d1e42;
+  border: 5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2.8rem;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45), 0 4px 16px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+.phone-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(59, 130, 246, 0.3) 0%,
+    transparent 70%
+  );
+}
+.balance-card {
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+}
+
+.nav-scrolled {
+  background: rgba(12, 30, 74, 0.97) !important;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.nav-link {
+  position: relative;
+}
+.nav-link.active {
+  color: #fff;
+  border-color: #0ea5e9;
+}
+
+.feat-card {
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.feat-card:hover {
+  box-shadow: 0 8px 32px rgba(17, 73, 163, 0.12);
+  transform: translateY(-2px);
+}
+
+.faq-body {
+  display: none;
+}
+.faq-body.open {
+  display: block;
+}
+.faq-icon {
+  transition: transform 0.25s;
+}
+.faq-icon.open {
+  transform: rotate(90deg);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(17, 73, 163, 0.25);
+  border-radius: 3px;
+}
+
+/* ---------- Scroll-triggered reveal ---------- */
+[data-animate] {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.16, 0.84, 0.44, 1),
+    transform 0.8s cubic-bezier(0.16, 0.84, 0.44, 1);
+  will-change: opacity, transform;
+}
+[data-animate="up"] {
+  transform: translateY(36px);
+}
+[data-animate="left"] {
+  transform: translateX(-44px);
+}
+[data-animate="right"] {
+  transform: translateX(44px);
+}
+[data-animate="scale"] {
+  transform: scale(0.92);
+}
+[data-animate].in-view {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Repeating groups (feature cards, faq items, contact items, etc.)
+   revealed one after another as their container scrolls into view */
+.feat-card,
+.faq-item,
+.space-y-7 > div,
+.grid.grid-cols-2.gap-3 > div,
+#contact .grid > div {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.6s cubic-bezier(0.16, 0.84, 0.44, 1),
+    transform 0.6s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+.feat-card.in-view,
+.faq-item.in-view,
+.space-y-7 > div.in-view,
+.grid.grid-cols-2.gap-3 > div.in-view,
+#contact .grid > div.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero content animates in on page load rather than on scroll,
+   since it's already visible above the fold */
+.hero-load {
+  opacity: 0;
+  animation: heroUp 0.9s cubic-bezier(0.16, 0.84, 0.44, 1) 0.1s forwards;
+}
+.hero-load-right {
+  opacity: 0;
+  animation: heroRight 1s cubic-bezier(0.16, 0.84, 0.44, 1) 0.25s forwards;
+}
+@keyframes heroUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes heroRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  .feat-card,
+  .faq-item,
+  .space-y-7 > div,
+  .grid.grid-cols-2.gap-3 > div,
+  #contact .grid > div,
+  .hero-load,
+  .hero-load-right {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
