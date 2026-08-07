@@ -98,11 +98,11 @@ cd abi-landing
 
 ### 3. Run it
 
-No build step or dependencies required — this is a static site. Open index.html directly in your browser, or serve it locally using the Live Server extension in VS Code:
+No build step or dependencies required — this is a static site. Open index.html directly in your browser, or serve it locally using the **Live Server** extension in VS Code:
 
-Install the Live Server extension
-Right-click index.html in the file explorer
-Select "Open with Live Server"
+1. Install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension
+2. Right-click `index.html` in the file explorer
+3. Select **"Open with Live Server"**
 
 ---
 
